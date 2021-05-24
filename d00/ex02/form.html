@@ -8,22 +8,33 @@
     <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
-    <form>
-      <div>Firstname: <input id="firstname" /></div>
-      <div>Name: <input id="name" /></div>
-      <div>Age: <input id="age" type="number" /></div>
-      <div>Phone: <input id="phone" type="tel" /></div>
-      <div>Email: <input id="email" type="email" /></div>
-      <div>Student at 42?: <input id="student" type="checkbox" /></div>
+    <form onsubmit="return false;">
+      <div>Firstname: <input id="firstname" required="required" /></div>
+      <div>Name: <input id="name" required="required" /></div>
+      <div>Age: <input id="age" type="number" required="required" /></div>
+      <div>Phone: <input id="phone" type="tel" required="required" /></div>
+      <div>Email: <input id="email" type="email" required="required" /></div>
+      <div>
+        Student at 42?:
+        <input id="student" type="checkbox" />
+      </div>
       <div>
         <label for="gender_male">Male</label>
-        <input id="gender_male" name="gender" type="radio" checked />
+        <input
+          id="gender_male"
+          name="gender"
+          value="Male"
+          type="radio"
+          checked
+        />
         <label for="gender_female">Female</label>
-        <input id="gender_female" name="gender" type="radio" />
+        <input id="gender_female" name="gender" value="Female" type="radio" />
         <label for="gender_other">Other</label>
-        <input id="gender_other" name="gender" type="radio" />
+        <input id="gender_other" name="gender" value="Other" type="radio" />
       </div>
-      <button onclick="displayFormContents()">run thax sexy Javascript!</button>
+      <button type="submit" onclick="displayFormContents()">
+        run thax sexy Javascript!
+      </button>
     </form>
   </body>
 </html>
