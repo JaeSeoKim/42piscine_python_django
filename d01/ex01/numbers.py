@@ -1,20 +1,20 @@
-# !/usr/bin/python3
+#!/usr/bin/python3
 
-TARGET="numbers.txt"
+TARGET = "numbers.txt"
+
 
 def read_target():
-  f = open(TARGET, 'r')
-  while (True):
-      line = f.readline()
-      if not line: break
-      print_line(line)
-  f.close()
-  print_line(line)
+    f = open(TARGET, 'r')
+    for line in f.readlines():
+        print_line(line.strip())
+    f.close()
+
 
 def print_line(line: str):
-  nodes = line.split(",")
-  for node in nodes:
-    print(node);
+    nodes = line.split(",")
+    for node in nodes:
+        print(node)
+
 
 if __name__ == '__main__':
-  read_target()
+    read_target()
