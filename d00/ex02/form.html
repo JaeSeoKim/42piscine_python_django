@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email sending form</title>
+    <script type="text/javascript" src="popup.js"></script>
+  </head>
+  <body>
+    <form>
+      <div>Firstname: <input id="firstname" /></div>
+      <div>Name: <input id="name" /></div>
+      <div>Age: <input id="age" type="number" /></div>
+      <div>Phone: <input id="phone" type="tel" /></div>
+      <div>Email: <input id="email" type="email" /></div>
+      <div>Student at 42?: <input id="student" type="checkbox" /></div>
+      <div>
+        <label for="gender_male">Male</label>
+        <input id="gender_male" name="gender_male" type="radio" checked />
+        <label for="gender_female">Female</label>
+        <input id="gender_female" name="gender_female" type="radio" />
+        <label for="gender_other">Other</label>
+        <input id="gender_other" name="gender_other" type="radio" />
+      </div>
+      <button onclick="displayFormContents()">run thax sexy Javascript!</button>
+    </form>
+  </body>
+</html>
