@@ -9,13 +9,27 @@
   </head>
   <body>
     <form onsubmit="return false;">
-      <div>Firstname: <input id="firstname" required="required" /></div>
-      <div>Name: <input id="name" required="required" /></div>
-      <div>Age: <input id="age" type="number" required="required" /></div>
-      <div>Phone: <input id="phone" type="tel" required="required" /></div>
-      <div>Email: <input id="email" type="email" required="required" /></div>
       <div>
-        Student at 42?:
+        <label for="firstname">Firstname: </label>
+        <input id="firstname" required/>
+      </div>
+      <div>
+        <label for="name">Name: </label><input id="name" required/>
+      </div>
+      <div>
+        <label for="age">Age: </label>
+        <input id="age" type="number" required/>
+      </div>
+      <div>
+        <label for="phone">Phone: </label>
+        <input id="phone" type="tel" required/>
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input id="email" type="email" required/>
+      </div>
+      <div>
+        <label for="student">Student at 42?: </label>
         <input id="student" type="checkbox" />
       </div>
       <div>
