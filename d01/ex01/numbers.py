@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 
-TARGET = "numbers.txt"
-
-
 def read_target():
-    f = open(TARGET, 'r')
+    f = open("numbers.txt", 'r')
     for line in f.readlines():
         print_line(line.strip())
     f.close()

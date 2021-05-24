@@ -2,19 +2,6 @@
 
 import sys
 
-states = {
-    "Oregon": "OR",
-    "Alabama": "AL",
-    "New Jersey": "NJ",
-    "Colorado": "CO"
-}
-capital_cities = {
-    "OR": "Salem",
-    "AL": "Montgomery",
-    "NJ": "Trenton",
-    "CO": "Denver"
-}
-
 
 def get_item(dict: dict, target: str):
     for key, item in dict.items():
@@ -31,6 +18,18 @@ def get_key(dict: dict, target: str):
 
 
 def print_state_or_capital_city(str: str):
+    states = {
+        "Oregon": "OR",
+        "Alabama": "AL",
+        "New Jersey": "NJ",
+        "Colorado": "CO"
+    }
+    capital_cities = {
+        "OR": "Salem",
+        "AL": "Montgomery",
+        "NJ": "Trenton",
+        "CO": "Denver"
+    }
     value = get_item(states, str)
     key = get_key(capital_cities, str)
     if value:

@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
-import sys
+def parse_line(line: str):
+    el = line.split("=")
+    result = dict((value.strip().split(":") for value in el[1].split(", ")))
+    result["name"] = el[0].strip()
+    return result
 
-HTML = """
+
+def main():
+    HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +37,7 @@ HTML = """
 </html>
 """
 
-TEMPLATE = """
+    TEMPLATE = """
       <td style="border: 1px solid black; padding:10px">
         <h4>{name}</h4>
         <ul>
@@ -43,15 +49,6 @@ TEMPLATE = """
       </td>
 """
 
-
-def parse_line(line: str):
-    el = line.split("=")
-    result = dict((value.strip().split(":") for value in el[1].split(", ")))
-    result["name"] = el[0].strip()
-    return result
-
-
-def main():
     body = "<tr>"
     f = open("periodic_table.txt", "r")
     periodic_table = [(parse_line(line)) for line in f.readlines()]
