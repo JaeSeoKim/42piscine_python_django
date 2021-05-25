@@ -26,7 +26,7 @@ def main():
 
     list = sorted([(key, item) for key, item in d.items()],
                   key=lambda list: (list[1], list[0]))
-    [print(el[0], el[1]) for el in list]
+    [print(el[0]) for el in list]
 
 
 if __name__ == '__main__':

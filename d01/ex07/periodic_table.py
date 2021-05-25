@@ -59,7 +59,7 @@ def main():
             body += "    </tr>\n    <tr>"
             position = 0
         for _ in range(position, int(dic["position"]) - 1):
-            body += "      <td></td>"
+            body += "      <td></td>\n"
         position = int(dic["position"])
         body += TEMPLATE.format(
             name=dic["name"],
