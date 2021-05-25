@@ -4,7 +4,6 @@ import sys
 import re
 import settings
 
-
 def main():
     if (len(sys.argv) != 2):
         return print("wrong argument count")
@@ -25,6 +24,7 @@ def main():
     f = open(path, "w")
     f.write(file)
     f.close()
+
 
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@
         <td>{age}</td>
       </tr>
       <tr>
-        <th>age</th>
+        <th>profession</th>
         <td>{profession}</td>
       </tr>
     </table>

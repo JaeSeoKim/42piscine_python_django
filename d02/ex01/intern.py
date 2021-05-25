@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
 class Coffee:
-    def __init__(self) -> None:
-        return
-
     def __str__(self) -> str:
         return "This is the worst coffee you ever tasted."
 
