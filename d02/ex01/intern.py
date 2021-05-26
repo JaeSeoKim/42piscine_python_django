@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+
 class Intern:
+
     class Coffee:
         def __str__(self) -> str:
             return "This is the worst coffee you ever tasted."
