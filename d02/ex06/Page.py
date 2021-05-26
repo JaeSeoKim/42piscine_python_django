@@ -18,7 +18,7 @@ class Page:
 
     def write_to_file(self, path: str) -> None:
         f = open(path, "w")
-        f.write(self.__str__)
+        f.write(self.__str__())
 
     def is_valid(self) -> bool:
         return self.__recursive_check(self.elem)
@@ -354,6 +354,15 @@ def __test_Elem():
     __print_test(Page(Elem()), False)
 
 
+def __test_write_to_file(target: Page, path: str):
+    print("================START===============")
+    print(str(target))
+    print("==========WRITE_TO_FILE=============")
+    target.write_to_file(path)
+    print("{:^36s}".format(path))
+    print("=================END================")
+
+
 def __test():
     __test_Table()
     __test_Tr()
@@ -364,6 +373,10 @@ def __test():
     __test_Body_Div()
     __test_Html()
     __test_Elem()
+    __test_write_to_file(
+        Page(Html([Head(Title(Text("hello world!"))),
+             Body(H1(Text("HELLO WORLD!")))])),
+        "__test_write_to_file.html")
 
 
 if __name__ == '__main__':

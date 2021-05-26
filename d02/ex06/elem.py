@@ -31,7 +31,7 @@ class Elem:
             result += ">{content}</{tag}>".format(
                 content=self.__make_content(), tag=self.tag)
         elif self.tag_type == 'simple':
-            result += "/>"
+            result += " />"
         return result
 
     def __make_attr(self):
