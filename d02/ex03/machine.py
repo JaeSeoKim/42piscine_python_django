@@ -4,16 +4,16 @@ import random
 from beverages import HotBeverage, Coffee, Tea, Cappuccino, Chocolate
 
 
-class EmptyCup(HotBeverage):
-    def __init__(self) -> None:
-        self.name = "empty cup"
-        self.price = 0.90
-
-    def description(self) -> str:
-        return "An empty cup?! Gimme my money back!"
-
-
 class CoffeeMachine:
+
+    class EmptyCup(HotBeverage):
+        def __init__(self) -> None:
+            self.name = "empty cup"
+            self.price = 0.90
+
+        def description(self) -> str:
+            return "An empty cup?! Gimme my money back!"
+
     class BrokenMachineException(Exception):
         def __init__(self) -> None:
             super().__init__("This coffee machine has to be repaired.")
@@ -29,7 +29,7 @@ class CoffeeMachine:
             raise CoffeeMachine.BrokenMachineException
         self.bronkenCount -= 1
         if random.randint(0, 5) == 0:
-            return EmptyCup()
+            return CoffeeMachine.EmptyCup()
         return drink()
 
 

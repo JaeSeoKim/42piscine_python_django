@@ -5,7 +5,7 @@ def print_my_dict(var: dict):
         print(key, ":", item)
 
 
-def var_to_dic():
+def var_to_dict():
     d = [
         ('Hendrix', '1942'),
         ('Allman', '1946'),
@@ -36,4 +36,4 @@ def var_to_dic():
 
 
 if __name__ == '__main__':
-    print_my_dict(var_to_dic())
+    print_my_dict(var_to_dict())
