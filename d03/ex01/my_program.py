@@ -4,7 +4,14 @@ from path import Path
 
 
 def main():
-    pass
+    try:
+        Path.makedirs('my_program')
+    except FileExistsError as e:
+        print(e)
+    Path.touch('something')
+    f = Path('something')
+    f.write_lines(['hello', 'world!'])
+    print(f.read_text())
 
 
 if __name__ == '__main__':

@@ -36,4 +36,5 @@ python -m pip --version | tee -a $LOG_FILE
 python -m pip install --force-reinstall git+$PATH_PY_URL | tee -a $LOG_FILE
 
 # execute the small program
+echo "=============execute-output=============" | tee -a $LOG_FILE
 python $SMALL_PROGRAM | tee -a $LOG_FILE
