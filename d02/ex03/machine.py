@@ -24,13 +24,13 @@ class CoffeeMachine:
     def repair(self) -> None:
         self.bronkenCount = 10
 
-    def serve(self, drink: HotBeverage) -> HotBeverage:
+    def serve(self, drink: HotBeverage) -> HotBeverage():
         if (self.bronkenCount <= 0):
             raise CoffeeMachine.BrokenMachineException
         self.bronkenCount -= 1
-        if random.randint(0, 3) == 0:
+        if random.randint(0, 5) == 0:
             return EmptyCup()
-        return drink
+        return drink()
 
 
 def test():
@@ -38,7 +38,7 @@ def test():
     for _ in range(23):
         try:
             print(coffeeMachine.serve(random.choice(
-                [HotBeverage(), Coffee(), Tea(), Cappuccino(), Chocolate()])))
+                [Coffee, Tea, Cappuccino, Chocolate])))
         except CoffeeMachine.BrokenMachineException as e:
             print(e)
             coffeeMachine.repair()
