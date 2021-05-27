@@ -16,25 +16,25 @@ BANNER="$(
 EOF
 )"
 
-LOG_FILE="my_script.log"
+LOG_FILE="pip_install.log"
 PYTHON_PATH="/usr/bin/python3"
 PATH_PY_URL="https://github.com/jaraco/path.git"
 VENE_DIR="local_lib"
 SMALL_PROGRAM="my_program.py"
 
 # print 42_HEADER
-echo "$BANNER" | tee $LOG_FILE
+echo "$BANNER"
 
 # setup venv
-$PYTHON_PATH -m venv $VENE_DIR | tee -a $LOG_FILE
+$PYTHON_PATH -m venv $VENE_DIR
 source $VENE_DIR/bin/activate
 
 # pip version
-python -m pip --version | tee -a $LOG_FILE
+python -m pip --version
 
 # pip install
-python -m pip install --force-reinstall git+$PATH_PY_URL | tee -a $LOG_FILE
+python -m pip install --log $LOG_FILE --force-reinstall git+$PATH_PY_URL
 
 # execute the small program
-echo "=============execute-output=============" | tee -a $LOG_FILE
-python $SMALL_PROGRAM | tee -a $LOG_FILE
+echo "=============execute-output============="
+python $SMALL_PROGRAM
