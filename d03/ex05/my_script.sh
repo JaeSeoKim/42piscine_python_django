@@ -9,7 +9,7 @@ BANNER="$(
 #                                                     +:+ +:+         +:+      #
 #    By: jaeskim <jaeskim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    install path.py with pip!                         #+#    #+#              #
+#    INIT Django Project !                             #+#    #+#              #
 #                                                     ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -30,5 +30,5 @@ source $VENE_DIR/bin/activate
 # pip version
 python -m pip --version
 
-# pip install
+pip install
 python -m pip install --force-reinstall -r requirement.txt
