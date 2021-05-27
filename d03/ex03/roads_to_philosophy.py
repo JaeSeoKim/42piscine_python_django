@@ -26,7 +26,7 @@ class roads_to_philosophy:
         allLinks = content.find_all('a')
         self.prev.append(path)
         for link in allLinks:
-            if link['href'].startswith('/wiki/') \
+            if link.get('href') is not None and link['href'].startswith('/wiki/')\
                     and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:')\
                     and not link['href'].startswith('/wiki/Category:') and not link['href'].startswith('/wiki/Template:')\
                     and not link['href'].startswith('/wiki/File:')\
