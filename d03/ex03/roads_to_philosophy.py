@@ -10,8 +10,6 @@ class roads_to_philosophy:
         self.prev = []
 
     def search_wikipeadia(self, path: str) -> None:
-        if path in self.prev:
-            return print("It leads to an infinite loop !")
         URL = 'https://en.wikipedia.org{page}'.format(page=path)
         try:
             res = requests.get(url=URL)
@@ -21,20 +19,20 @@ class roads_to_philosophy:
                 return print("It's a dead end !")
             return print(e)
         soup = BeautifulSoup(res.text, 'html.parser')
-        print(soup.find(id='firstHeading').text)
+        title = soup.find(id='firstHeading').text
+        if title in self.prev:
+            return print("It leads to an infinite loop !")
+        print(title)
+        if title == 'Philosophy':
+            return print("{} roads from {} to Philosophy".format(len(self.prev), self.prev[0] if len(self.prev) > 0 else 'Philosophy'))
         content = soup.find(id='mw-content-text')
-        allLinks = content.find_all('a')
-        self.prev.append(path)
+        allLinks = content.select('p > a')
+        self.prev.append(title)
         for link in allLinks:
             if link.get('href') is not None and link['href'].startswith('/wiki/')\
-                    and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:')\
-                    and not link['href'].startswith('/wiki/Category:') and not link['href'].startswith('/wiki/Template:')\
-                    and not link['href'].startswith('/wiki/File:')\
-                    and link.parent.name != 'b' and link.parent.name != 'strong' and link.parent.name != 'i':
+                    and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:'):
                 return self.search_wikipeadia(link['href'])
-        if (len(self.prev) == 1):
-            return print("It leads to a dead end !.")
-        return print("{} roads from {} to {}".format(len(self.prev), self.prev[0], path))
+        return print("It leads to a dead end !.")
 
 
 def main():
