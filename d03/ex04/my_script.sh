@@ -30,5 +30,5 @@ source $VENE_DIR/bin/activate
 # pip version
 python -m pip --version
 
-pip install
+# pip install
 python -m pip install --force-reinstall -r requirement.txt
