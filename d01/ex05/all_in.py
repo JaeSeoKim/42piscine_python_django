@@ -42,15 +42,14 @@ def print_state_or_capital_city(str: str):
 
 
 def main():
-    for i, v in enumerate(sys.argv):
-        if i == 0:
+    if (len(sys.argv) == 2):
+        return
+    tokens = sys.argv[1].split(",")
+    for token in tokens:
+        token = token.strip()
+        if token == "":
             continue
-        tokens = v.split(",")
-        for token in tokens:
-            token = token.strip()
-            if token == "":
-                continue
-            print_state_or_capital_city(token)
+        print_state_or_capital_city(token)
 
 
 if __name__ == '__main__':

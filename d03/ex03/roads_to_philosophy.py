@@ -22,12 +22,12 @@ class roads_to_philosophy:
         title = soup.find(id='firstHeading').text
         if title in self.prev:
             return print("It leads to an infinite loop !")
+        self.prev.append(title)
         print(title)
         if title == 'Philosophy':
             return print("{} roads from {} to Philosophy".format(len(self.prev), self.prev[0] if len(self.prev) > 0 else 'Philosophy'))
         content = soup.find(id='mw-content-text')
         allLinks = content.select('p > a')
-        self.prev.append(title)
         for link in allLinks:
             if link.get('href') is not None and link['href'].startswith('/wiki/')\
                     and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:'):
