@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fifty shades of bic.</title>
+    <style>
+      td,
+      th {
+        width: 80px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fifty shades of bic.</h1>
+    <div>
+      <table>
+        <tr>
+          <th>black</th>
+          <th>red</th>
+          <th>green</th>
+          <th>blue</th>
+        </tr>
+        {% for i in range %}
+        <tr>
+          <td style="background-color: #{{i}}{{i}}{{i}}"></td>
+          <td style="background-color: #{{i}}0000"></td>
+          <td style="background-color: #00{{i}}00"></td>
+          <td style="background-color: #0000{{i}}"></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

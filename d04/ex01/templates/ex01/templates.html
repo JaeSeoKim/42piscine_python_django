@@ -1,0 +1,112 @@
+{% extends 'ex01/base.html' %} {% load static %} {% block title %}
+<title>Ex01: Template engine.</title>
+{% endblock title %} {% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'style2.css' %}" />
+{% endblock style %} {% block content %}
+
+<div class="content">
+  <h1>Inheritance and Inclusion</h1>
+  {% verbatim %}
+  <div class="trac-content">
+    <h1>
+      Template Tags Cheat Sheet<a
+        class="anchor"
+        href="#TemplateTagsCheatSheet"
+        title="Link to this section"
+      >
+        ¶</a
+      >
+    </h1>
+    <h2>
+      Inheritance and Inclusion<a
+        class="anchor"
+        href="#InheritanceandInclusion"
+        title="Link to this section"
+      >
+        ¶</a
+      >
+    </h2>
+    <ul>
+      <li>{% extends "base.html "%}</li>
+      <li>
+        {% block content %} ... {% endblock %} or {% block content %} ... {%
+        endblock content %}
+      </li>
+      <li>{% include "foo/bar.html" %}</li>
+      <li>{% ssi /home/html/ljworld.com/includes/right_generic.html %}</li>
+    </ul>
+    <h2>
+      Filters and Tags<a
+        class="anchor"
+        href="#FiltersandTags"
+        title="Link to this section"
+      >
+        ¶</a
+      >
+    </h2>
+    <ul>
+      <li>{% load &lt;tag_or_filter_lib&gt; %}</li>
+      <li>{% filter &lt;filter&gt;[|&lt;filter&gt;...] %}</li>
+    </ul>
+    <h2>
+      Control<a class="anchor" href="#Control" title="Link to this section">
+        ¶</a
+      >
+    </h2>
+    <ul>
+      <li>{% for o in some_list %} ... {% endfor %}</li>
+      <li>{% ifchanged %} (Content to check status of) {% endifchanged %}</li>
+      <li>{% if &lt;var&gt; %} ... {% endif %}</li>
+      <li>
+        {% if[not]equal user.id comment.user_id %} ... [{% else %}] ... {%
+        endif[not]equal %}
+      </li>
+      <li>{% cycle row1,row2 %}</li>
+      <li>
+        {% cycle row1,row2 as rowcolors %}
+        <strong> {% cycle rowcolors %} </strong>
+      </li>
+      <li>{% firstof var1 var2 var3 %}</li>
+      <li>
+        {% regroup people by gender as grouped %} ... {% for group in grouped %}
+        {{ group.grouper }} ...
+      </li>
+    </ul>
+    <h2>
+      The display of the passing context variables.<a
+        class="anchor"
+        href="#Variables"
+        title="Link to this section"
+      >
+        ¶</a
+      >
+    </h2>
+    <ul>
+      <li>{% variableName %}</li>
+    </ul>
+    <h2>
+      Others<a class="anchor" href="#Others" title="Link to this section"> ¶</a>
+    </h2>
+    <ul>
+      <li>
+        {% templatetag
+        (openblock|closeblock|openvariable|closevariable|openbrace|closebrace)
+        %}
+      </li>
+      <li>{% widthratio this_value max_value 100 %}</li>
+      <li>It is {% now "jS F Y H:i" %}</li>
+      <li>{% spaceless %} ... {% endspaceless %}</li>
+    </ul>
+    <p>
+      See also
+      <a
+        class="ext-link"
+        href="http://www.djangoproject.com/documentation/templates/"
+        ><span class="icon">&#8203;</span>templates for designers</a
+      >.
+    </p>
+  </div>
+  {% endverbatim %}
+</div>
+
+{% endblock content %}

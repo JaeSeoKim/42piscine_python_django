@@ -1,0 +1,98 @@
+{% extends 'ex01/base.html' %} {% load static %} {% block title %}
+<title>Ex01: Django, framework web.</title>
+{% endblock title %} {% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}" />
+{% endblock style %} {% block content %}
+<div role="main" class="content">
+  <h1>About the Django Software Foundation</h1>
+  <p>
+    Development of Django is supported by an independent foundation established
+    as a 501(c)(3) non-profit. Like most open-source foundations, the goal of
+    the Django Software Foundation is to promote, support, and advance its
+    open-source project: in our case, the Django Web framework.
+  </p>
+
+  <p>The foundation's goals are to:</p>
+
+  <ul>
+    <li>
+      Support development of Django by sponsoring sprints, meetups, gatherings
+      and community events.
+    </li>
+    <li>
+      Promote the use of Django among the world-wide Web development community.
+    </li>
+    <li>
+      Protect the intellectual property and the framework's long-term viability.
+    </li>
+    <li>Advance the state of the art in Web development.</li>
+  </ul>
+
+  <h2>Corporate Members</h2>
+  <p>
+    The Django Software Foundation would not be able to operate without the
+    generous financial support of our
+    <a href="/foundation/corporate-members/">corporate members</a>. If you are
+    interested in becoming a corporate member of the DSF, you can find out more
+    on our
+    <a href="/foundation/corporate-membership/">corporate membership page</a>
+  </p>
+
+  <h2>Individual Members</h2>
+  <p>
+    <a href="/foundation/individual-members/">Individual members</a> are
+    appointed to the Django Software Foundation in recognition of their
+    contributions to the Django community. If you know of someone that you think
+    should be a member, including yourself,
+    <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSd5lbWxAO-sylEEjHVKBNIpmHlhdJRf0_LCo8glnLUWd-Q2Sw/viewform?usp=sf_link"
+    >
+      please fill out this form</a
+    >
+    and the DSF membership will enter them into consideration.
+  </p>
+
+  <h2>Support for events</h2>
+  <p>
+    The DSF is happy to provide financial and other support to Django events
+    around the world. Find out
+    <a href="/foundation/conferences/"
+      >how the DSF can support your conference or other event</a
+    >.
+  </p>
+
+  <h3>Code of Conduct requirement</h3>
+  <p>
+    The DSF will only endorse or support events which publish and adhere to a
+    suitable <a href="/foundation/code-of-conduct/">Code of Conduct</a>.
+  </p>
+
+  <h2>Prizes</h2>
+  <p>
+    The DSF <a href="/foundation/prizes/">awards prizes</a> to recognize the
+    contributions of volunteers in the Django community.
+  </p>
+
+  <h2 id="board">Board</h2>
+
+  <p>The board of directors are:</p>
+
+  <ul>
+    <li>Anna Makarudze, President</li>
+    <li>Aaron Bassett, Vice President</li>
+    <li>Chaim Kirby, Secretary</li>
+    <li>William Vincent, Treasurer</li>
+    <li>Kátia Nakamura</li>
+    <li>Mfon Eti-mfon</li>
+    <li>Žan Anderle</li>
+  </ul>
+
+  <h2>Questions?</h2>
+
+  <p><a href="/contact/foundation/">Get in touch!</a></p>
+
+  <a href="#top" class="backtotop"
+    ><i class="icon icon-chevron-up"></i> Back to Top</a
+  >
+</div>
+{% endblock %}

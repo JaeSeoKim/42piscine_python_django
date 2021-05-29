@@ -296,3 +296,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/python,django,linux,macos,windows
 
 django_venv/
+logs/

@@ -20,7 +20,7 @@ class Body(Elem):
 
 class Title(Elem):
     def __init__(self, content=None, attr: dict = {}):
-        super().__init__(tag='title', attr=attr, content=content, tag_type='simple')
+        super().__init__(tag='title', attr=attr, content=content, tag_type='double')
 
 
 class Meta(Elem):
