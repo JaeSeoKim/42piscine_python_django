@@ -6,4 +6,7 @@
   {% csrf_token %} {{ form.as_table }}
   <input type="submit" value="Submit" />
 </form>
-{% endblock %}
+<h1>History Data!</h1>
+{% for history in historys reversed %}
+<p>{{ history }}</p>
+{% endfor %} {% endblock %}
