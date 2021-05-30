@@ -1,8 +1,6 @@
-{% extends 'ex01/base.html' %} {% load static %} {% block title %}
+{% extends 'ex01/base.html' %} {% block title %}
 <title>Ex01: Django, framework web.</title>
-{% endblock title %} {% block style %}
-<link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}" />
-{% endblock style %} {% block content %}
+{% endblock title %} {% block content %}
 <div role="main" class="content">
   <h1>About the Django Software Foundation</h1>
   <p>
@@ -86,13 +84,5 @@
     <li>Mfon Eti-mfon</li>
     <li>Žan Anderle</li>
   </ul>
-
-  <h2>Questions?</h2>
-
-  <p><a href="/contact/foundation/">Get in touch!</a></p>
-
-  <a href="#top" class="backtotop"
-    ><i class="icon icon-chevron-up"></i> Back to Top</a
-  >
 </div>
 {% endblock %}

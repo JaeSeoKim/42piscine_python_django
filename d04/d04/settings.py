@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-HISTORY_LOG_FILE = BASE_DIR / 'history.log'
+HISTORY_LOG_FILE = BASE_DIR / 'ex02/logs.log'
 
 LOGGING = {
     'version': 1,
