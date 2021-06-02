@@ -10,7 +10,7 @@ TABLE_NAME = "ex04_movies"
 
 
 class Remove(View):
-    template = "ex04/remove.html"
+    template = "ex06/remove.html"
     conn = psycopg2.connect(
         dbname=settings.DATABASES['default']['NAME'],
         user=settings.DATABASES['default']['USER'],

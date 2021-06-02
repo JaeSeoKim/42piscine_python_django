@@ -5,11 +5,9 @@ from django.views import View
 import psycopg2
 
 
-TABLE_NAME = "ex04_movies"
-
-
 class Display(View):
-    template = 'ex04/display.html'
+    template = 'ex06/display.html'
+    TABLE_NAME = "ex06_movies"
     conn = psycopg2.connect(
         dbname=settings.DATABASES['default']['NAME'],
         user=settings.DATABASES['default']['USER'],
@@ -19,9 +17,9 @@ class Display(View):
     )
 
     def get(self, request):
-        SELECT_TABEL = """
-            SELECT * FROM {table_name};
-            """.format(table_name=TABLE_NAME)
+        SELECT_TABEL = f"""
+            SELECT * FROM {self.TABLE_NAME};
+            """
         try:
             with self.conn.cursor() as curs:
                 curs.execute(SELECT_TABEL)
