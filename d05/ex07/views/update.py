@@ -3,11 +3,11 @@ from django.views import View
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from ..models import Movies
-from ..forms import RemoveForm
+from ..forms import UpdateForm
 
 
-class Remove(View):
-    template = 'ex05/remove.html'
+class Update(View):
+    template = 'ex07/update.html'
 
     def get(self, request):
         try:
@@ -18,7 +18,7 @@ class Remove(View):
             print(e)
             return HttpResponse("No data available movies")
         choices = ((movie.title, movie.title) for movie in movies)
-        context = {"form": RemoveForm(choices)}
+        context = {"form": UpdateForm(choices)}
         return render(request, self.template, context)
 
     def post(self, request):
@@ -29,10 +29,12 @@ class Remove(View):
         except Movies.DoesNotExist as e:
             return redirect(request.path)
         choices = ((movie.title, movie.title) for movie in movies)
-        data = RemoveForm(choices, request.POST)
+        data = UpdateForm(choices, request.POST)
         if data.is_valid():
             try:
-                Movies.objects.get(title=data.cleaned_data['title']).delete()
+                movie = Movies.objects.get(title=data.cleaned_data['title'])
+                movie.opening_crawl = data.cleaned_data['opening_crawl']
+                movie.save()
             except db.Error as e:
                 print(e)
         return redirect(request.path)

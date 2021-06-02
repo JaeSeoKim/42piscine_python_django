@@ -6,7 +6,7 @@ from ..models import Movies
 
 
 class Display(View):
-    template = 'ex05/display.html'
+    template = 'ex07/display.html'
 
     def get(self, request):
         try:

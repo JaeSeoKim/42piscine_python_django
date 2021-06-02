@@ -80,5 +80,5 @@ def display(request):
         if len(movies) == 0:
             raise Movies.DoesNotExist
         return render(request, 'ex03/display.html', {"movies": movies})
-    except db.Error as e:
+    except Movies.DoesNotExist as e:
         return HttpResponse("No data available movies")

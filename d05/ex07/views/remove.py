@@ -1,13 +1,13 @@
+from ex05.forms.remove import RemoveForm
 from django import db
 from django.views import View
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from ..models import Movies
-from ..forms import RemoveForm
 
 
 class Remove(View):
-    template = 'ex05/remove.html'
+    template = 'ex07/remove.html'
 
     def get(self, request):
         try:
