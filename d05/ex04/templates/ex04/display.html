@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display</title>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <th>title</th>
+          <th>episode_nb</th>
+          <th>opening_crawl</th>
+          <th>director</th>
+          <th>producer</th>
+          <th>release_date</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+          <td>{{ movie.0 }}</td>
+          <td>{{ movie.1 }}</td>
+          <td>{{ movie.2 }}</td>
+          <td>{{ movie.3 }}</td>
+          <td>{{ movie.4 }}</td>
+          <td>{{ movie.5 }}</td>
+        </tr>
+        {% endfor %}
+      </toby>
+    </table>
+  </body>
+</html>

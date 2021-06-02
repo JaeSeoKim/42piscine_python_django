@@ -4,7 +4,7 @@ from django.db import models
 class Movies(models.Model):
 
     class Meta:
-        db_table = 'ex01_movies'
+        db_table = 'ex03_movies'
     title = models.CharField(max_length=64, unique=True, null=False)
     episode_nb = models.IntegerField(primary_key=True)
     opening_crawl = models.TextField(null=True)
