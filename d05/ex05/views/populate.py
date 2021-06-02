@@ -1,9 +1,8 @@
-from django.conf import settings
-from django.http.response import HttpResponse
+from django import db
 from django.views import View
-import psycopg2
-
-TABLE_NAME = "ex04_movies"
+from django.http import HttpResponse
+from django.shortcuts import render
+from ..models import Movies
 
 movies = [
     {
@@ -59,46 +58,20 @@ movies = [
 
 
 class Populate(View):
-    conn = psycopg2.connect(
-        dbname=settings.DATABASES['default']['NAME'],
-        user=settings.DATABASES['default']['USER'],
-        password=settings.DATABASES['default']['PASSWORD'],
-        host=settings.DATABASES['default']['HOST'],
-        port=settings.DATABASES['default']['PORT'],
-    )
 
     def get(self, request):
-
-        INSERT_DATA = """
-            INSERT INTO {table_name}
-            (
-                episode_nb,
-                title,
-                director,
-                producer,
-                release_date
-            )
-            VALUES
-            (
-                %s, %s, %s, %s, %s
-            );
-            """.format(table_name=TABLE_NAME)
-
         result = []
-        curs = self.conn.cursor()
-        for movie in movies:
+        for value in movies:
             try:
-                curs.execute(INSERT_DATA, [
-                    movie['episode_nb'],
-                    movie['title'],
-                    movie['director'],
-                    movie['producer'],
-                    movie['release_date'],
-                ])
+                Movies.objects.create(
+                    episode_nb=value['episode_nb'],
+                    title=value['title'],
+                    director=value['director'],
+                    producer=value['producer'],
+                    release_date=value['release_date'],
+                )
                 result.append("OK")
-                self.conn.commit()
-            except psycopg2.DatabaseError as e:
-                self.conn.rollback()
+            except db.Error as e:
                 result.append(e)
-        curs.close()
+
         return HttpResponse("<br/>".join(str(i) for i in result))
