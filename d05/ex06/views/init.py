@@ -23,9 +23,24 @@ class Init(View):
                 opening_crawl TEXT,
                 director VARCHAR(32) NOT NULL,
                 producer VARCHAR(128) NOT NULL,
-                release_date DATE NOT NULL
+                release_date DATE NOT NULL,
+                created TIMESTAMP NOT NULL DEFAULT NOW(),
+                updated TIMESTAMP NOT NULL DEFAULT NOW()
                 );
+
+            CREATE OR REPLACE FUNCTION update_changetimestamp_column()
+            RETURNS TRIGGER AS $$
+            BEGIN
+            NEW.updated = now();
+            NEW.created = OLD.created;
+            RETURN NEW;
+            END;
+            $$ language 'plpgsql';
+            CREATE TRIGGER update_films_changetimestamp BEFORE UPDATE
+            ON {self.TABLE_NAME} FOR EACH ROW EXECUTE PROCEDURE
+            update_changetimestamp_column();
             """
+
             with self.conn.cursor() as curs:
                 curs.execute(CREATE_TABEL)
             self.conn.commit()

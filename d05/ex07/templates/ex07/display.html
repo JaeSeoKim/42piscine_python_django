@@ -16,6 +16,8 @@
           <th>director</th>
           <th>producer</th>
           <th>release_date</th>
+          <th>created</th>
+          <th>updated</th>
         </tr>
         {% for movie in movies %}
         <tr>
@@ -25,6 +27,8 @@
           <td>{{ movie.director }}</td>
           <td>{{ movie.producer }}</td>
           <td>{{ movie.release_date }}</td>
+          <td>{{ movie.created }}</td>
+          <td>{{ movie.updated }}</td>
         </tr>
         {% endfor %}
       </toby>
