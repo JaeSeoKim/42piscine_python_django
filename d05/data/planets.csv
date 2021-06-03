@@ -1,0 +1,60 @@
+Alderaan	temperate	12500	364	2000000000	24	40	grasslands, mountains
+Yavin IV	temperate, tropical	10200	4818	1000	24	8	jungle, rainforests
+Hoth	frozen	7200	549	NULL	23	100	tundra, ice caves, mountain ranges
+Dagobah	murky	8900	341	NULL	23	8	swamp, jungles
+Bespin	temperate	118000	5110	6000000	12	0	gas giant
+Endor	temperate	4900	402	30000000	18	8	forests, mountains, lakes
+Naboo	temperate	12120	312	4500000000	26	12	grassy hills, swamps, forests, mountains
+Coruscant	temperate	12240	368	1000000000000	24	NULL	cityscape, mountains
+Kamino	temperate	19720	463	1000000000	27	100	ocean
+Geonosis	temperate, arid	11370	256	100000000000	30	5	rock, desert, mountain, barren
+Utapau	temperate, arid, windy	12900	351	95000000	27	0.9	scrublands, savanna, canyons, sinkholes
+Mustafar	hot	4200	412	20000	36	0	volcanoes, lava rivers, mountains, caves
+Kashyyyk	tropical	12765	381	45000000	26	60	jungle, forests, lakes, rivers
+Polis Massa	artificial temperate 	0	590	1000000	24	0	airless asteroid
+Mygeeto	frigid	10088	167	19000000	12	NULL	glaciers, mountains, ice canyons
+Felucia	hot, humid	9100	231	8500000	34	NULL	fungus forests
+Cato Neimoidia	temperate, moist	0	278	10000000	25	NULL	mountains, fields, forests, rock arches
+Saleucami	hot	14920	392	1400000000	26	NULL	caves, desert, mountains, volcanoes
+Stewjon	temperate	0	NULL	NULL	NULL	NULL	grass
+Eriadu	polluted	13490	360	22000000000	24	NULL	cityscape
+Corellia	temperate	11000	329	3000000000	25	70	plains, urban, hills, forests
+Rodia	hot	7549	305	1300000000	29	60	jungles, oceans, urban, swamps
+Nal Hutta	temperate	12150	413	7000000000	87	NULL	urban, oceans, swamps, bogs
+Dantooine	temperate	9830	378	1000	25	NULL	oceans, savannas, mountains, grasslands
+Bestine IV	temperate	6400	680	62000000	26	98	rocky islands, oceans
+Ord Mantell	temperate	14050	334	4000000000	26	10	plains, seas, mesas
+Trandosha	arid	0	371	42000000	25	NULL	mountains, seas, grasslands, deserts
+Socorro	arid	0	326	300000000	20	NULL	deserts, mountains
+Mon Cala	temperate	11030	398	27000000000	21	100	oceans, reefs, islands
+Chandrila	temperate	13500	368	1200000000	20	40	plains, forests
+Sullust	superheated	12780	263	18500000000	20	5	mountains, volcanoes, rocky deserts
+Toydaria	temperate	7900	184	11000000	21	NULL	swamps, lakes
+Malastare	arid, temperate, tropical	18880	201	2000000000	26	NULL	swamps, deserts, jungles, mountains
+Dathomir	temperate	10480	491	5200	24	NULL	forests, deserts, savannas
+Ryloth	temperate, arid, subartic	10600	305	1500000000	30	5	mountains, valleys, deserts, tundra
+Aleen Minor	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+Vulpter	temperate, artic	14900	391	421000000	22	NULL	urban, barren
+Troiken	NULL	NULL	NULL	NULL	NULL	NULL	desert, tundra, rainforests, mountains
+Tund	NULL	12190	1770	0	48	NULL	barren, ash
+Haruun Kal	temperate	10120	383	705300	25	NULL	toxic cloudsea, plateaus, volcanoes
+Cerea	temperate	NULL	386	450000000	27	20	verdant
+Glee Anselm	tropical, temperate	15600	206	500000000	33	80	lakes, islands, swamps, seas
+Iridonia	NULL	NULL	413	NULL	29	NULL	rocky canyons, acid pools
+Tholoth	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+Iktotch	arid, rocky, windy	NULL	481	NULL	22	NULL	rocky
+Quermia	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+Dorin	temperate	13400	409	NULL	22	NULL	NULL
+Champala	temperate	NULL	318	3500000000	27	NULL	oceans, rainforests, plateaus
+Mirial	NULL	NULL	NULL	NULL	NULL	NULL	deserts
+Serenno	NULL	NULL	NULL	NULL	NULL	NULL	rainforests, rivers, mountains
+Concord Dawn	NULL	NULL	NULL	NULL	NULL	NULL	jungles, forests, deserts
+Zolan	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+Ojom	frigid	NULL	NULL	500000000	NULL	100	oceans, glaciers
+Skako	temperate	NULL	384	500000000000	27	NULL	urban, vines
+Muunilinst	temperate	13800	412	5000000000	28	25	plains, forests, hills, mountains
+Shili	temperate	NULL	NULL	NULL	NULL	NULL	cities, savannahs, seas, plains
+Kalee	arid, temperate, tropical	13850	378	4000000000	23	NULL	rainforests, cliffs, canyons, seas
+Umbara	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+Tatooine	arid	10465	304	200000	23	1	desert
+Jakku	NULL	NULL	NULL	NULL	NULL	NULL	deserts
