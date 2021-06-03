@@ -1,8 +1,82 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %} {% load bootstrap3 %}
 
-{% block content %}
-<h1>Hello World!</h1>
-<h1>
-{{ user.username }}
-</h1>
-{% endblock content %}
+<div>
+  {% if user.is_authenticated %}
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#exampleModal"
+  >
+    Create Tip!
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="display: flex; flex-direction: row">
+          <h5
+            class="modal-title inline"
+            style="width: 100%"
+            id="exampleModalLabel"
+          >
+            Create Tip!
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{% url 'tip' %}" method="post" class="form">
+          <div class="modal-body">
+            {% csrf_token %} {% bootstrap_form tipform %}
+          </div>
+          <div class="modal-footer">
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+              {% bootstrap_icon "star" %} Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            {% endbuttons %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+  <ul class="media-list">
+    {% for tip in tips %}
+    <li class="media" style="margin-top: 10px; margin-bottom: 10px">
+      <div class="media-body">
+        <h5 class="media-heading">{{ tip.author }}</h5>
+        <p>{{ tip.content }}</p>
+        <p>
+          <small class="text-muted">{{ tip.date }}</small>
+        </p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <div>{% endblock content %}</div>
+</div>

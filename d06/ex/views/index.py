@@ -1,10 +1,20 @@
-import uuid
-from django.views.generic import TemplateView
+from django import db
+from django.views import View
 from django.shortcuts import render
+from ..forms import TipForm
+from ..models import TipModel
 
 
-class Index(TemplateView):
+class Index(View):
     template_name = "index.html"
 
     def get(self, request):
-        return render(request, self.template_name)
+        try:
+            tips = TipModel.objects.all().order_by('-date')
+        except db.DatabaseError as e:
+            tips = []
+        context = {
+            'tipform': TipForm(),
+            'tips': tips
+        }
+        return render(request, self.template_name, context)
