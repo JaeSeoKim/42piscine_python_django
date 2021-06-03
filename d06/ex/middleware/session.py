@@ -6,13 +6,13 @@ import time
 import random
 
 
-SESSION_EXFIRE_TIME = 1
+SESSION_EXFIRE_TIME = 42
 SESSION_TIMEOUT_KEY = "_session_anonmymous_timestamp_"
 
 
 class AnonymousSessionMiddleware(MiddlewareMixin):
     def process_request(self, request: HttpRequest):
-        if request.session.get('user'):
+        if request.user.is_authenticated:
             return
 
         init_time = request.session.setdefault(
@@ -22,7 +22,8 @@ class AnonymousSessionMiddleware(MiddlewareMixin):
 
         if session_is_expired:
             request.session.flush()
-            request.session.create()
 
         request.session.setdefault('anonymous', random.choice(
             settings.ANONYMOUS_NAMES))
+
+        request.user.username = request.session.get('anonymous')

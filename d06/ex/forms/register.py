@@ -1,6 +1,15 @@
-from ..models import User
-from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
+
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ("username",  "password1", "password2")
+
+
+"""
+내장 Modle 사용으로 불피요한 코드 😢
 
 class RegiserForm(forms.Form):
     username = forms.CharField(min_length=6, max_length=32, required=True)
@@ -10,7 +19,6 @@ class RegiserForm(forms.Form):
         widget=forms.PasswordInput, min_length=8, max_length=256, required=True)
 
     def clean(self):
-        super(RegiserForm,)
         data = self.cleaned_data
 
         username = data.get("username")
@@ -25,3 +33,4 @@ class RegiserForm(forms.Form):
             self.add_error('username', "Already exist user name")
 
         return self.cleaned_data
+"""

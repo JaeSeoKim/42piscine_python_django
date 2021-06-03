@@ -16,8 +16,8 @@
   </head>
   <body>
     {% include 'nav.html' %}
-    {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
     <div class="container">
+      {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
       {% block content %}
       <h1>{{ request.path }}</h1>
       <span>Please replace content!</span>

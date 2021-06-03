@@ -1,21 +1,26 @@
-from ex.forms.login import LoginForm
-from ..models import User
-from ..forms import LoginForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.http import request
 from django.views.generic import FormView
 from django.urls import reverse_lazy
+from django.shortcuts import render
 
 
 class Login(FormView):
     template_name = "login.html"
-    form_class = LoginForm
+    form_class = AuthenticationForm
     success_url = reverse_lazy('index')
 
-    def form_valid(self, form: LoginForm):
-        self.request.session.flush()
-        self.request.session['user'] = {
-            'id': form.cleaned_data["username"]
-        }
-        self.request.session.modified = True
+    def form_valid(self, form: AuthenticationForm):
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(self.request, username=username, password=password)
+        if user is None:
+            messages.error(request,"Invalid username or password.")
+            return
+        login(self.request, user)
+        messages.info(self.request, f"You are now logged in as {username}.")
         return super().form_valid(form)
 
     def form_invalid(self, form):
