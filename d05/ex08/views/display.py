@@ -24,11 +24,15 @@ class Display(View):
                 {self.table_people}.name,
                 {self.table_people}.homeworld,
                 {self.table_planets}.climate
-            FROM {self.table_planets}, {self.table_people}
-            where
-                {self.table_planets}.climate
-                like '%windy%'
-            order by {self.table_planets}.name;
+            FROM
+                {self.table_planets}
+                RIGHT JOIN {self.table_people}
+                ON
+                    {self.table_people}.homeworld = {self.table_planets}.name
+                    where
+                        {self.table_planets}.climate
+                        LIKE '%windy%'
+                ORDER BY {self.table_planets}.name;
             """
         try:
             with self.conn.cursor() as curs:
