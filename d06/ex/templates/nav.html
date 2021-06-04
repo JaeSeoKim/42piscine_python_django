@@ -7,7 +7,7 @@
         <a class="navbar-brand" href="{% url 'index' %}">Life Pro Tips</a>
       </div>
 
-      <div>
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a
@@ -24,6 +24,8 @@
             <ul class="dropdown-menu">
               {% if user.is_authenticated %}
               <li><a href="{% url 'logout' %}">Logout</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{% url 'profile' %}">Profile Page!</a></li>
               {% else %}
               <li><a href="{% url 'register' %}">Register</a></li>
               <li><a href="{% url 'login' %}">Login</a></li>
