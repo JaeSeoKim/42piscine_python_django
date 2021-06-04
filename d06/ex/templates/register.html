@@ -5,6 +5,7 @@
 
 {% block content %}
 <div>
+  <h1>Register</h1>
   <form action="{% url 'register' %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
