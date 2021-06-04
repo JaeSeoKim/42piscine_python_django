@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.http.request import HttpRequest
 from ex.forms.tip import DeleteTipForm, VoteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -33,6 +34,7 @@ class Tip(LoginRequiredMixin, View):
                 )
                 messages.success(self.request, "Successful create Tip.")
             except DatabaseError as e:
+                print(e)
                 messages.error(
                     self.request, "Unsuccessful create Tip. (db error)")
         else:
@@ -40,42 +42,44 @@ class Tip(LoginRequiredMixin, View):
                 self.request, "Unsuccessful create Tip. (Invalid form data.)")
         return redirect('index')
 
-    def __error_msg(self, msg):
+    def __error_msg(self, method, msg):
         messages.error(
-            self.request, f"Unsuccessful delete Tip. ({msg})")
+            self.request, f"Unsuccessful {method} Tip. ({msg})")
         return redirect('index')
 
     def delete(self, request: HttpRequest):
         form = DeleteTipForm(None, request.POST)
         if not form.is_valid():
-            return self.__error_msg("Invaild form data.")
+            return self.__error_msg("delete", "Invaild form data.")
         try:
             tip: TipModel = TipModel.objects.get(
                 id=form.cleaned_data['id'])
             if tip.author != request.user and request.user.is_staff == False and request.user.is_superuser == False:
-                return self.__error_msg("access denied")
+                return self.__error_msg("delete", "access denied")
             tip.delete()
             messages.success(self.request, "Successful delete Tip.")
         except TipModel.DoesNotExist as e:
-            return self.__error_msg("Tip does not exist")
+            return self.__error_msg("delete", "Tip does not exist")
         except DatabaseError as e:
-            return self.__error_msg("db error")
+            return self.__error_msg("delete", "db error")
 
         return redirect('index')
 
     def put(self, request):
         form = VoteForm(None, request.POST)
         if not form.is_valid():
-            return self.__error_msg("Invaild form data.")
+            return self.__error_msg("vote", "Invaild form data.")
         try:
             tip: TipModel = TipModel.objects.get(id=form.cleaned_data['id'])
             if form.cleaned_data['type']:
                 tip.upvote(request.user)
+            elif tip.author != request.user and request.user.groups.filter(name='blacklist').exists():
+                return self.__error_msg("vote", "you can't do that!!")
             else:
                 tip.downvote(request.user)
         except TipModel.DoesNotExist as e:
-            return self.__error_msg("Tip does not exist")
+            return self.__error_msg("vote", "Tip does not exist")
         except DatabaseError as e:
-            return self.__error_msg("db error")
+            return self.__error_msg("vote", "db error")
         messages.success(request, 'Voted success!')
         return redirect('index')
