@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+<div>
+  <h1 style="display: inline-block">Articles</h1>
+  <h3
+    style="display: inline-block; margin-left: 10px; color: rgb(125, 125, 125)"
+  >
+    Share your writings
+  </h3>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <tr>
+        <th>title</th>
+        <th>created</th>
+        <th>synopsis</th>
+        <th>author</th>
+      </tr>
+      <tr>
+        <td>{{ object.title }}</td>
+        <td>{{ object.created }}</td>
+        <td>{{ object.synopsis }}</td>
+        <td>{{ object.author }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}
