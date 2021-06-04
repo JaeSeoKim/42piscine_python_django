@@ -31,4 +31,4 @@ source $VENE_DIR/bin/activate
 pip --version
 
 # pip install
-pip install --force-reinstall -r requirement.txt
+pip install --force-reinstall -r requirements.txt
