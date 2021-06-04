@@ -12,9 +12,6 @@ class UpVoteModel(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
-    update_at = models.DateTimeField(
-        auto_now=True,
-    )
 
 
 class DownVoteModel(models.Model):
@@ -22,9 +19,6 @@ class DownVoteModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(
         auto_now_add=True,
-    )
-    update_at = models.DateTimeField(
-        auto_now=True,
     )
 
 
@@ -37,9 +31,6 @@ class TipModel(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     up_votes = models.ManyToManyField(UpVoteModel)
     down_votes = models.ManyToManyField(DownVoteModel)
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-    )
     updated_at = models.DateTimeField(auto_now=True)
 
     def upvote(self, user):

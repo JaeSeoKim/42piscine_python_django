@@ -1,3 +1,4 @@
+from django.http.request import HttpRequest
 from ex.forms.tip import DeleteTipForm, VoteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
@@ -44,14 +45,14 @@ class Tip(LoginRequiredMixin, View):
             self.request, f"Unsuccessful delete Tip. ({msg})")
         return redirect('index')
 
-    def delete(self, request):
+    def delete(self, request: HttpRequest):
         form = DeleteTipForm(None, request.POST)
         if not form.is_valid():
             return self.__error_msg("Invaild form data.")
         try:
             tip: TipModel = TipModel.objects.get(
                 id=form.cleaned_data['id'])
-            if tip.author != request.user:
+            if tip.author != request.user and request.user.is_staff == False and request.user.is_superuser == False:
                 return self.__error_msg("access denied")
             tip.delete()
             messages.success(self.request, "Successful delete Tip.")

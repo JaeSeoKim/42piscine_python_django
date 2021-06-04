@@ -106,7 +106,7 @@
       {% endif %}
       <div>
         <h5>
-          {% if user == tip.author %}
+          {% if user == tip.author or user.is_superuser or user.is_staff%}
           <button
             type="button"
             class="btn close"
