@@ -7,7 +7,7 @@
     type="button"
     class="btn btn-primary"
     data-toggle="modal"
-    data-target="#exampleModal"
+    data-target="#createtip"
   >
     Create Tip!
   </button>
@@ -15,10 +15,10 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    id="exampleModal"
+    id="createtip"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="createtipLabel"
     aria-hidden="true"
   >
     <div class="modal-dialog" role="document">
@@ -27,7 +27,7 @@
           <h5
             class="modal-title inline"
             style="width: 100%"
-            id="exampleModalLabel"
+            id="createtipLabel"
           >
             Create Tip!
           </h5>
@@ -65,14 +65,75 @@
 
   {% endif %}
 
-  <ul class="media-list">
+  <ul class="list-group">
     {% for tip in tips %}
-    <li class="media" style="margin-top: 10px; margin-bottom: 10px">
-      <div class="media-body">
-        <h5 class="media-heading">{{ tip.author }}</h5>
+    <li class="list-group-item" style="margin-top: 10px; margin-bottom: 10px">
+      <div>
+        <h5>
+          {% if user == tip.author %}
+          <button
+            type="button"
+            class="btn close"
+            data-toggle="modal"
+            data-target="#deletetip-{{ tip.id }}"
+          >
+            ×
+          </button>
+          <div
+            class="modal fade"
+            id="deletetip-{{ tip.id }}"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="deletetip-{{ tip.id }}Label"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div
+                  class="modal-header"
+                  style="display: flex; flex-direction: row"
+                >
+                  <h5
+                    class="modal-title inline"
+                    style="width: 100%"
+                    id="deletetip-{{ tip.id }}Label"
+                  >
+                    Delete Tip!
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="{% url 'tip' %}" method="post" class="form">
+                  {% csrf_token %} {% bootstrap_form tip.deleteform %}
+                  <div class="modal-footer">
+                    {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                      {% bootstrap_icon "star" %} Ok
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Cancle
+                    </button>
+                    {% endbuttons %}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endif %} {{ tip.author }}
+        </h5>
         <p>{{ tip.content }}</p>
         <p>
-          <small class="text-muted">{{ tip.date }}</small>
+          <small>{{ tip.date }}</small>
         </p>
       </div>
     </li>

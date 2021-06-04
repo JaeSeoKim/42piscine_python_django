@@ -1,7 +1,7 @@
 from django import db
 from django.views import View
 from django.shortcuts import render
-from ..forms import TipForm
+from ..forms import TipForm, DeleteTipForm
 from ..models import TipModel
 
 
@@ -15,6 +15,12 @@ class Index(View):
             tips = []
         context = {
             'tipform': TipForm(),
-            'tips': tips
+            'tips': [{
+                'id': tip.id,
+                'content': tip.content,
+                'author': tip.author,
+                'date': tip.date,
+                'deleteform': DeleteTipForm(tip.id),
+            } for tip in tips],
         }
         return render(request, self.template_name, context)
