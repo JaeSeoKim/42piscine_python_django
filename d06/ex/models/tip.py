@@ -1,9 +1,5 @@
-from django.contrib import auth
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.expressions import Expression
-from django.db.models.query_utils import select_related_descend
-from django.db.utils import DatabaseError
 
 
 class UpVoteModel(models.Model):
@@ -39,7 +35,10 @@ class TipModel(models.Model):
             down_vote.delete()
         except DownVoteModel.DoesNotExist as e:
             pass
-        if not self.up_votes.filter(author=user).count():
+        try:
+            up_vote: UpVoteModel = self.up_votes.get(author=user)
+            up_vote.delete()
+        except UpVoteModel.DoesNotExist as e:
             up_vote = UpVoteModel(author=user)
             up_vote.save()
             self.up_votes.add(up_vote)
@@ -51,7 +50,10 @@ class TipModel(models.Model):
             up_votes.delete()
         except UpVoteModel.DoesNotExist as e:
             pass
-        if not self.down_votes.filter(author=user).count():
+        try:
+            down_vote: DownVoteModel = self.down_votes.get(author=user)
+            down_vote.delete()
+        except DownVoteModel.DoesNotExist as e:
             down_vote = DownVoteModel(author=user)
             down_vote.save()
             self.down_votes.add(down_vote)

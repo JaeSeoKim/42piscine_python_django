@@ -168,16 +168,20 @@
           {% endif %} {{ tip.author }}
         </h5>
         <p>{{ tip.content }}</p>
-        <p>
-          <small>{{ tip.date }}</small>
-          <span onclick="document.getElementById('{{tip.id}}-upvote').click()"
-            >👍{{tip.up_votes.count}}</span
-          >
-          -
-          <span onclick="document.getElementById('{{tip.id}}-downvote').click()"
-            >👎{{tip.down_votes.count}}</span
-          >
-        </p>
+        <div style="display: flex; justify-content: space-between;">
+          <small >{{ tip.date }}</small>
+          <p>
+            {% if user.is_authenticated %}
+            <span style="cursor: pointer;" onclick="document.getElementById('{{tip.id}}-upvote').click()"
+              >👍{{tip.up_votes.count}}</span>
+            {{' - '}}
+            <span style="cursor: pointer;" onclick="document.getElementById('{{tip.id}}-downvote').click()"
+              >👎{{tip.down_votes.count}}</span>
+            {% else %}
+            👍{{tip.up_votes.count}} - 👎{{tip.down_votes.count}}
+            {% endif %}
+          </p>
+        </div>
       </div>
     </li>
     {% endfor %}
