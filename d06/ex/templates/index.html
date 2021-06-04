@@ -68,6 +68,42 @@
   <ul class="list-group">
     {% for tip in tips %}
     <li class="list-group-item" style="margin-top: 10px; margin-bottom: 10px">
+      {% if user.is_authenticated %}
+      <form
+        action="{% url 'tip' %}"
+        method="post"
+        class="form"
+        style="display: none"
+      >
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="put" id="_method" />
+        <input type="hidden" name="id" value="{{ tip.id }}" />
+        <input type="checkbox" hidden="true" name="type" id="type" checked />
+        <input
+          hidden="true"
+          type="submit"
+          class="btn btn-primary"
+          id="{{tip.id}}-upvote"
+        />
+      </form>
+      <form
+        action="{% url 'tip' %}"
+        method="post"
+        class="form"
+        style="display: none"
+      >
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="put" id="_method" />
+        <input type="hidden" name="id" value="{{ tip.id }}" />
+        <input type="checkbox" hidden="true" name="type" id="type" />
+        <input
+          hidden="true"
+          type="submit"
+          class="btn btn-primary"
+          id="{{tip.id}}-downvote"
+        />
+      </form>
+      {% endif %}
       <div>
         <h5>
           {% if user == tip.author %}
@@ -134,6 +170,13 @@
         <p>{{ tip.content }}</p>
         <p>
           <small>{{ tip.date }}</small>
+          <span onclick="document.getElementById('{{tip.id}}-upvote').click()"
+            >👍{{tip.up_votes.count}}</span
+          >
+          -
+          <span onclick="document.getElementById('{{tip.id}}-downvote').click()"
+            >👎{{tip.down_votes.count}}</span
+          >
         </p>
       </div>
     </li>

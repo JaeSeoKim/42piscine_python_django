@@ -1,4 +1,4 @@
-from ex.forms.tip import DeleteTipForm
+from ex.forms.tip import DeleteTipForm, VoteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import View
@@ -46,9 +46,8 @@ class Tip(LoginRequiredMixin, View):
 
     def delete(self, request):
         form = DeleteTipForm(None, request.POST)
-        print(request.POST)
         if not form.is_valid():
-            return self.__error_msg("form data.")
+            return self.__error_msg("Invaild form data.")
         try:
             tip: TipModel = TipModel.objects.get(
                 id=form.cleaned_data['id'])
@@ -56,6 +55,26 @@ class Tip(LoginRequiredMixin, View):
                 return self.__error_msg("access denied")
             tip.delete()
             messages.success(self.request, "Successful delete Tip.")
+        except TipModel.DoesNotExist as e:
+            return self.__error_msg("Tip does not exist")
         except DatabaseError as e:
             return self.__error_msg("db error")
+
+        return redirect('index')
+
+    def put(self, request):
+        form = VoteForm(None, request.POST)
+        if not form.is_valid():
+            return self.__error_msg("Invaild form data.")
+        try:
+            tip: TipModel = TipModel.objects.get(id=form.cleaned_data['id'])
+            if form.cleaned_data['type']:
+                tip.upvote(request.user)
+            else:
+                tip.downvote(request.user)
+        except TipModel.DoesNotExist as e:
+            return self.__error_msg("Tip does not exist")
+        except DatabaseError as e:
+            return self.__error_msg("db error")
+        messages.success(request, 'Voted success!')
         return redirect('index')
