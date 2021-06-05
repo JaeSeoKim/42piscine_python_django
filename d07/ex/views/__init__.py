@@ -6,3 +6,4 @@ from .register import *
 from .publish import *
 from .publications import *
 from .detail import *
+from .favourite import *

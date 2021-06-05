@@ -1,3 +1,4 @@
+from ex.views.favourite import Favourite
 from django.urls import path
 from . import views
 
@@ -9,6 +10,6 @@ urlpatterns = [
     path('articles/', views.ArticlesView.as_view(), name='articles'),
     path('articles/<slug:pk>/', views.Detail.as_view(), name='articles_detail'),
     path('publish/', views.Publish.as_view(), name='publish'),
-    path('publications/', views.Publications.as_view(), name='publications')
-
+    path('publications/', views.Publications.as_view(), name='publications'),
+    path('favourite/', views.Favourite.as_view(), name='favourite')
 ]

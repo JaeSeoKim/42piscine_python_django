@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load bootstrap3 %}
+{% block title %}Favourite | {% endblock title %}
+{% block content %}
+
+<div>
+  <h1 style="display: inline-block">Favourite</h1>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <tr>
+        <th>title</th>
+      </tr>
+      {% for favourite in object_list %}
+      <tr>
+        <td>
+          <a
+            href="{% url 'articles_detail' favourite.article.id %}"
+            >{{ favourite.article.title }}-{{ favourite.article.author }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}

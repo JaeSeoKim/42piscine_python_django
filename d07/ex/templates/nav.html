@@ -9,6 +9,7 @@
 
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Last Articles</a></li>
           <li class="dropdown">
             <a
               href="#"
@@ -25,6 +26,7 @@
               {% if user.is_authenticated %}
               <li><a href="{% url 'logout' %}">Logout</a></li>
               <li role="separator" class="divider"></li>
+              <li><a href="{% url 'favourite' %}">Favourite</a></li>
               <li><a href="{% url 'publish' %}">Publish</a></li>
               <li><a href="{% url 'publications' %}">Publications</a></li>
               {% else %}

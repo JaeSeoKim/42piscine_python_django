@@ -1,11 +1,26 @@
-{% extends 'base.html' %} {% load bootstrap3 %} {% block title %}{{ object.title
-}} | {% endblock title %} {% block content %}
+{% extends 'base.html' %} {% load bootstrap3 %}
+
+{% block title %}{{ object.title }} | {% endblock title %}
+
+{% block content %}
 <div>
   <h1>{{ object.title }}</h1>
-  <h3 style="display: inline-block; color: rgb(125, 125, 125)">
-    {{ object.author }}
-  </h3>
-  <h5 style="display: inline-block;">- {{ object.created }}</h5>
+  <div style="display: flex; justify-content: space-between;">
+    <div>
+      <h3 style="display: inline-flex; color: rgb(125, 125, 125)">
+        {{ object.author }}
+      </h3>
+      <h5 style="display: inline-flex">- {{ object.created }}</h5>
+    </div>
+    {% if user.is_authenticated %}
+    <form style="display: inline-flex; 	align-self: center;" action="{% url 'favourite' %}" method="post" class="form">
+      {% csrf_token %}
+      {% bootstrap_form favouriteForm %}
+      {% buttons submit='🔖' %}{% endbuttons %}
+    </form>
+    {% endif %}
+  </div>
+  <hr />
   <div class="lead">
     <blockquote>{{ object.synopsis }}</blockquote>
     <div>{{ object.content }}</div>
