@@ -13,9 +13,16 @@
       crossorigin="anonymous"
     ></script>
     {% bootstrap_css %} {% bootstrap_javascript %}
+    <style>
+      #login_form label {
+        display: none;
+      }
+      th {
+        text-transform: capitalize;
+      }
+    </style>
   </head>
   <body>
-    {% include 'nav.html' %}
     <div class="container">
       {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
       {% block content %}

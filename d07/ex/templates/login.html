@@ -6,6 +6,7 @@
 {% block content %}
 <div>
   <h1>Login</h1>
+  {% include 'nav.html' %}
   <form action="{% url 'login' %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}

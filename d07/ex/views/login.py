@@ -1,7 +1,7 @@
+from ex.forms.login import LoginForm
 from typing import Any
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import redirect
 from django.views.generic import FormView
@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 
 class Login(FormView):
     template_name = "login.html"
-    form_class = AuthenticationForm
+    form_class = LoginForm
     success_url = reverse_lazy('index')
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
@@ -19,7 +19,7 @@ class Login(FormView):
             return redirect('index')
         return super().get(request, *args, **kwargs)
 
-    def form_valid(self, form: AuthenticationForm):
+    def form_valid(self, form: LoginForm):
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(self.request, username=username, password=password)

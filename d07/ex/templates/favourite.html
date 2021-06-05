@@ -4,10 +4,11 @@
 
 <div>
   <h1 style="display: inline-block">Favourite</h1>
+  {% include 'nav.html' %}
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
       <tr>
-        <th>title</th>
+        <th>Title</th>
       </tr>
       {% for favourite in object_list %}
       <tr>

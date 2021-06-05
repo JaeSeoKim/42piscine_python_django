@@ -6,6 +6,7 @@
 {% block content %}
 <div>
   <h1>Publish</h1>
+  {% include 'nav.html' %}
   <form action="{% url 'publish' %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}

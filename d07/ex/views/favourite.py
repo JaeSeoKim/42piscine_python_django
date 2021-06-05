@@ -1,6 +1,7 @@
 from django.db.models.query import QuerySet
 from django.forms.forms import BaseForm
 from django.db import DatabaseError
+from django.shortcuts import redirect
 from django.views.generic.list import ListView
 from ex.models.article import Article, UserFavouriteArticle
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,7 +16,7 @@ class Favourite(LoginRequiredMixin, ListView, FormView):
     template_name = "favourite.html"
     form_class = FavouriteForm
     success_url = reverse_lazy('index')
-    login_url = reverse_lazy('login')
+    login_url = reverse_lazy('index')
     model: UserFavouriteArticle = UserFavouriteArticle
 
     def get_queryset(self):
@@ -44,7 +45,7 @@ class Favourite(LoginRequiredMixin, ListView, FormView):
     def form_invalid(self, form):
         messages.error(
             self.request, "Unsuccessful Add to favourite. Invalid information.")
-        return super().form_invalid(form)
+        return redirect('favourite')
 
     def get_form(self, form_class=None) -> BaseForm:
         if form_class is None:

@@ -15,7 +15,7 @@ class Publish(LoginRequiredMixin, FormView):
     template_name = "publish.html"
     form_class = PublishForm
     success_url = reverse_lazy('index')
-    login_url = reverse_lazy('login')
+    login_url = reverse_lazy('index')
 
     def form_valid(self, form: PublishForm):
         title = form.cleaned_data['title']

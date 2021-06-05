@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load bootstrap3 %}
 
 {% block title %}Articles | {% endblock title %}
@@ -12,6 +13,7 @@
   >
     Share your writings
   </h3>
+  {% include 'nav.html' %}
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
       <tr>
@@ -19,7 +21,7 @@
         <th>created</th>
         <th>synopsis</th>
         <th>author</th>
-        <th>detail</th>
+        <th>read</th>
       </tr>
       {% for article in object_list %}
       <tr>
@@ -30,8 +32,8 @@
         <td>
           <a
             href="{% url 'articles_detail' article.id %}"
-            class="btn btn-primary"
-            >Detail</a
+            class="btn btn-info"
+            >Read</a
           >
         </td>
       </tr>

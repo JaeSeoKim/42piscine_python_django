@@ -1,11 +1,11 @@
-{% extends 'base.html' %} {% load bootstrap3 %}
-
-{% block title %}{{ object.title }} | {% endblock title %}
-
-{% block content %}
+{% extends 'base.html' %} {% load bootstrap3 %} {% block title %}{{ object.title
+}} | {% endblock title %} {% block content %}
+<h1>Detail</h1>
+<hr />
+{% include 'nav.html' %}
 <div>
   <h1>{{ object.title }}</h1>
-  <div style="display: flex; justify-content: space-between;">
+  <div style="display: flex; justify-content: space-between">
     <div>
       <h3 style="display: inline-flex; color: rgb(125, 125, 125)">
         {{ object.author }}
@@ -13,10 +13,14 @@
       <h5 style="display: inline-flex">- {{ object.created }}</h5>
     </div>
     {% if user.is_authenticated %}
-    <form style="display: inline-flex; 	align-self: center;" action="{% url 'favourite' %}" method="post" class="form">
-      {% csrf_token %}
-      {% bootstrap_form favouriteForm %}
-      {% buttons submit='🔖' %}{% endbuttons %}
+    <form
+      style="display: inline-flex; align-self: center"
+      action="{% url 'favourite' %}"
+      method="post"
+      class="form"
+    >
+      {% csrf_token %} {% bootstrap_form favouriteForm %}
+      {% buttons submit='🔖'%}{% endbuttons %}
     </form>
     {% endif %}
   </div>

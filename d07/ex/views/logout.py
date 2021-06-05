@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 
 class Logout(LoginRequiredMixin, RedirectView):
     url = reverse_lazy('index')
-    login_url = reverse_lazy('login')
+    login_url = reverse_lazy('index')
 
     def get_redirect_url(self, *args: Any, **kwargs: Any) -> Optional[str]:
         logout(self.request)
