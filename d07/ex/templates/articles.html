@@ -18,6 +18,7 @@
         <th>created</th>
         <th>synopsis</th>
         <th>author</th>
+        <th>detail</th>
       </tr>
       {% for article in object_list %}
       <tr>
@@ -25,6 +26,13 @@
         <td>{{ article.created }}</td>
         <td>{{ article.synopsis }}</td>
         <td>{{ article.author }}</td>
+        <td>
+          <a
+            href="{% url 'articles_detail' article.id %}"
+            class="btn btn-primary"
+            >Detail</a
+          >
+        </td>
       </tr>
       {% endfor %}
     </table>
