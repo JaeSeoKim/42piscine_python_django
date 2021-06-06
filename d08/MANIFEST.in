@@ -1,0 +1,5 @@
+include README.MD
+recursive-include ex/static *
+recursive-include ex/templates *
+
+recursive-include docs *
