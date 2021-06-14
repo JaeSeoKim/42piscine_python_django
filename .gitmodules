@@ -1,0 +1,6 @@
+[submodule "rush00"]
+	path = rush00
+	url = https://github.com/42Seoul-Piscine-Python-Django/42seoulboy.git
+[submodule "rush01"]
+	path = rush01
+	url = https://github.com/42Seoul-Piscine-Python-Django/The-My-Lovely-Intranet.git

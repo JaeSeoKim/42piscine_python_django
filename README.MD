@@ -13,3 +13,7 @@ Much like the selection piscine, the project is split in many small projects (da
 - At least one weekend of work: going into the piscine shouldn’t be taken lightly. We
   expect you to validate at least one of the two rushes.
 - After the end of the piscine, you have two weeks to do all the required peerevaluations
+
+### ✅ Score
+
+<img src="./image/Screen%20Shot%202021-06-14%20at%205.52.29%20PM.png" alt="jaeskim's Piscine Python Django Score!"/>
